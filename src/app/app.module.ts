@@ -7,7 +7,7 @@ import { ProductsComponent } from './products/products.component';
 
 import {HttpClientModule} from "@angular/common/http";
 //mport { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-//import { FormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,7 +19,7 @@ import {HttpClientModule} from "@angular/common/http";
     BrowserModule,
     HttpClientModule,
   //  NgbModule,
-    //FormsModule
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

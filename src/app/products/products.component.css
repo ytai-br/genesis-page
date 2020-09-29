@@ -1,22 +1,25 @@
-.btn-round{
+.btn-round {
     border-radius: 50%;
     position: absolute;
     float: right;
-    color:black !important;
+    color: black !important;
     font-weight: bold;
     background-color: white !important;
     width: 5%;
     height: 10%;
 }
-.btn-add{
+
+.btn-add {
     display: flex;
     justify-content: flex-end;
     align-items: center;
 }
-.products-content{
+
+.products-content {
     padding: 5%;
 }
-.card{
+
+.card {
     background-color: black;
     border: double 10px white;
 }
