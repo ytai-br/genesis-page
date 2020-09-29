@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
+class ImageSnippet {
+  constructor(public src: string, public file: File) {}
+}
+
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
@@ -34,12 +38,15 @@ export class ProductsComponent implements OnInit {
   }
 
   deleteProduct(id, position) {
-    this.httpClient.delete(this.url + "product/delete/"+id).subscribe((response:any) => {
-      if (response.success) {
-        this.products.slice(position, 1);
-        console.log("eliminado");
-      }
-    });
+    if (id == 0) {
+      this.iniciarProductos();
+    } else {
+      this.httpClient.delete(this.url + "product/delete/"+id).subscribe((response:any) => {
+        if (response.success) {
+          this.iniciarProductos();
+        }
+      });
+    }
   }
 
   editProduct(position) {
@@ -53,7 +60,6 @@ export class ProductsComponent implements OnInit {
     if (id == 0) {
       delete this.products[position]["_id"];
       delete this.products[position]["edited"]
-      console.log(this.products[position]);
       this.httpClient.post(this.url + "product/save", this.products[position], options).subscribe((response:any) => {
         if (response.success) {
           this.iniciarProductos();
@@ -62,10 +68,26 @@ export class ProductsComponent implements OnInit {
     } else {
       this.httpClient.patch(this.url + "product/update/"+id, this.products[position], options).subscribe((response:any) => {
         if (response.success) {
-          console.log("actualizado");
+          this.iniciarProductos();
         }
       });
     }
   }
+
+  getBase64(image) {
+    let me = this;
+    let file = image;
+    let reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = function () {
+      console.log(reader.result);
+      return reader.result;
+    };
+    reader.onerror = function (error) {
+      console.log('Error: ', error);
+      return "...";
+    };
+ }
+ 
   
 }

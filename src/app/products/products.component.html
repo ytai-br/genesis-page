@@ -3,7 +3,7 @@
         <div *ngFor="let product of products; let i = index">
             <div class="col mb-4">
                 <div class="card">
-                    <img src="..." class="card-img-top" alt="...">
+                    <img src="{{product.image}}" class="card-img-top" alt="...">
                     <div *ngIf="product.edited==false" class="card-body">
                         <h5 class="card-title">{{product.title}}</h5>
                         <p class="card-text">{{product.description}}</p>
