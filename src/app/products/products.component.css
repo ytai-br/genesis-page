@@ -22,4 +22,6 @@
 .card {
     background-color: black;
     border: double 10px white;
+    width: 80%;
+    height: 90%;
 }
