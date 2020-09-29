@@ -1,0 +1,23 @@
+<div class="products-content">
+  <div class="row row-cols-1 row-cols-md-3">
+    <div *ngFor="let product of products">
+      <div class="col mb-4">
+        <div class="card">
+          <img src="..." class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">{{product.title}}</h5>
+            <p class="card-text">{{product.description}}</p>
+            <p class="card-text">{{product.price}}</p>
+            <button type="button" class="btn btn-outline-light">Editar</button>
+            <button type="button" class="btn btn-outline-dark">Eliminar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="btn-add">
+    <button type="button" class="btn btn-round" data-toggle="button" aria-pressed="false" (click)="addProduct()">
+     +
+    </button>
+  </div>
+</div>
