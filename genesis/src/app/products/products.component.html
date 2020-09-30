@@ -24,7 +24,7 @@
             </div>
         </div>
     </div>
-    <div class="btn-add ">
-        <button *ngIf="userService.isAdministrator()" type="button " class="btn btn-round " data-toggle="button " aria-pressed="false " (click)="addProduct() ">+</button>
+    <div class="btn-add " *ngIf="userService.isAdministrator()">
+        <button type="button " class="btn btn-round " data-toggle="button " aria-pressed="false " (click)="addProduct() ">+</button>
     </div>
 </div>
