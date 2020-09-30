@@ -67,7 +67,7 @@ export class ProductsComponent implements OnInit {
     reader.readAsDataURL(file);
     reader.onload = function () {
       console.log(reader.result);
-      self.products[position].image = reader.result;
+      self.products[position].image = "`data:image/png;base64" + reader.result;
     };
     reader.onerror = function (error) {
       console.log('Error: ', error);

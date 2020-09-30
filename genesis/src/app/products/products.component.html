@@ -13,7 +13,6 @@
                     </div>
                     <div *ngIf="product.edited==true" class="card-body">
                         <div class="form-group">
-                            <input name="imageUrl" type="file" accept="image/*" (change)="handleInputChange($event, i)" />
                             <input type="text" class="form-control form-control-sm" [(ngModel)]="product.title"><br>
                             <input type="text" class="form-control form-control-sm" [(ngModel)]="product.description"><br>
                             <input type="text" class="form-control form-control-sm" [(ngModel)]="product.price"><br>
