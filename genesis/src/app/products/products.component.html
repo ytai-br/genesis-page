@@ -8,8 +8,8 @@
                         <h5 class="card-title">{{product.title}}</h5>
                         <p class="card-text">{{product.description}}</p>
                         <p class="card-text">{{product.price}}</p>
-                        <button type="button" class="btn btn-outline-light" (click)="editProduct(i)">Editar</button>
-                        <button type="button" class="btn btn-outline-dark" (click)="deleteProduct(product._id, i)">Eliminar</button>
+                        <button *ngIf="userService.isAdministrator()" type="button" class="btn btn-outline-light" (click)="editProduct(i)">Editar</button>
+                        <button *ngIf="userService.isAdministrator()" type="button" class="btn btn-outline-dark" (click)="deleteProduct(product._id, i)">Eliminar</button>
                     </div>
                     <div *ngIf="product.edited==true" class="card-body">
                         <div class="form-group">
@@ -17,8 +17,8 @@
                             <input type="text" class="form-control form-control-sm" [(ngModel)]="product.description"><br>
                             <input type="text" class="form-control form-control-sm" [(ngModel)]="product.price"><br>
                         </div>
-                        <button type="button " class="btn btn-outline-light" (click)="updateProduct(product._id, i) ">Guardar</button>
-                        <button type="button " class="btn btn-outline-dark" (click)="deleteProduct(product._id, i) ">Eliminar</button>
+                        <button *ngIf="userService.isAdministrator()" type="button " class="btn btn-outline-light" (click)="updateProduct(product._id, i) ">Guardar</button>
+                        <button *ngIf="userService.isAdministrator()" type="button " class="btn btn-outline-dark" (click)="deleteProduct(product._id, i) ">Eliminar</button>
                     </div>
                 </div>
             </div>

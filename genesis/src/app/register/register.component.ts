@@ -15,11 +15,11 @@ export class RegisterComponent implements OnInit {
   constructor(private httpClient: HttpClient) { 
     this.url ="https://genesis-node-server.herokuapp.com/";
     this.user = {}
-    this.user.email= "";
-    this.user.firstName= "";
-    this.user.lastName= "";
-    this.user.password= "";
-    this.user.image= "None";
+    this.user.email = "";
+    this.user.firstName = "";
+    this.user.lastName = "";
+    this.user.password = "";
+    this.user.image = "None";
   }
 
   ngOnInit() {

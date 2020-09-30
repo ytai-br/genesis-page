@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { UserService } from '../user-service/user.service'
 
 class ImageSnippet {
   constructor(public src: string, public file: File) {}
@@ -14,7 +15,8 @@ export class ProductsComponent implements OnInit {
 
   private url:string ;
   public products: any[]=[];
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient,
+              public userService: UserService) { }
 
   ngOnInit() {
     this.url ="https://genesis-node-server.herokuapp.com/";

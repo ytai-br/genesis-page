@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { UserService } from '../user-service/user.service';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,8 @@ export class LoginComponent implements OnInit {
   public user: any;
   @Output() option:EventEmitter<string> = new EventEmitter();
 
-  constructor(private httpClient: HttpClient) { 
+  constructor(private httpClient: HttpClient,
+              public userService: UserService) { 
     this.url ="https://genesis-node-server.herokuapp.com/";
     this.user = {};
     this.user.email = "";
@@ -31,9 +33,16 @@ export class LoginComponent implements OnInit {
     const options = {headers: header};
     this.httpClient.post(this.url + "user/login", this.user, options).subscribe((response:any) => {
       if (response.success) {
-        console.log("entro: ", response.data);
+        this.userService.login(response.data);        
       }
     });
+  }
+
+  logout() {
+    this.user = {};
+    this.user.email = "";
+    this.user.password = "";
+    this.userService.logout();
   }
 
 }
