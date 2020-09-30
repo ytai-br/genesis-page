@@ -1,34 +1,33 @@
 <div class="login-page">
-<div class="loginForm " >
+    <div class="loginForm ">
         <h1>Login</h1>
-        <form>
+        <form method="POST">
             <div class="form-group has-feedback">
-                <input type="email" class="form-control form-input" id="" placeholder="" required>
-                <label  for="">correo</label>
+                <input id="email " name="email " type="email" placeholder="Correo " class="form-control form-input" required=" " [(ngModel)]="user.email">
+                <label for="">correo</label>
                 <span class="glyphicon form-control-feedback"></span>
             </div>
             <div class="form-group has-feedback">
-                <input type="password" class="form-control form-input" id="" placeholder="" required>
-                <label  for="">contraseña</label>
+                <input id="password " name="password " type="password" placeholder="Contraseña " class="form-control form-input" required=" " [(ngModel)]="user.password">
+                <label for="">contraseña</label>
                 <span class="glyphicon form-control-feedback"></span>
             </div>
         </form>
         <div class="form-inline">
             <div class="form-group pull-right">
-                <label id="" class="loginPwReset">
+                <label class="loginPwReset">
                     <a href="#">Olvido su contraseña ?</a>
                 </label>
             </div>
-            
         </div>
-        <button id="submit" type="submit" class="btn btn-default submit" value="Login">Login</button>
+        <button id="submit" type="submit" class="btn btn-default submit" value="Login" (click)="login()">Login</button>
         <div class="form-inline">
             <div class="form-group pull-right">
-                <label id="" class="loginPwReset">
-                    <a href="#">Crear cuenta nueva </a>
+                <label class="loginPwReset">
+                    <p>Crear cuenta nueva </p>
                 </label>
             </div>
         </div>
-        <button id="submit" type="submit" class="btn btn-default submit" value="Login">Crear</button>
-</div>
+        <button (click)="openRegister()" id="submit" type="submit" class="btn btn-default submit" value="Login">Crear</button>
+    </div>
 </div>

@@ -19,16 +19,20 @@
     padding: 5%;
 }
 
-.card   {
+.card {
     background-color: black;
     border: double 10px white;
     width: 80%;
     height: 90%;
-    
 }
-.card-img-top{
-    width: 100%; 
+
+.card-img-top {
+    width: 100%;
     height: 30vw;
-    object-fit:cover;
+    object-fit: cover;
 }
-   
+
+.card-title,
+.card-text {
+    color: white !important;
+}

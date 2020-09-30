@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const productRoute = require('./routes/product');
 const userRoute = require('./routes/user');
+const orderRoute = require('./routes/order');
 
 const app = express()
 const port = process.env.PORT || 3000;
@@ -28,6 +29,7 @@ app.get('/', function(req, res) {
 
 app.use('/product', productRoute);
 app.use('/user', userRoute);
+app.use('/order', orderRoute);
 
 app.listen(port, function() {
     console.log(`Hello my name is Dayana Ytai Barrios Rocha and it is my firt server using nodejs running on port ${port}!`)

@@ -1,6 +1,6 @@
-
-  <app-home></app-home>
-
-  <app-products></app-products>
-
-  <app-login></app-login>
+<app-home></app-home>
+<app-products></app-products>
+<app-login (option)="getOption($event)"></app-login>
+<div *ngIf="option=='register'">
+    <app-register (option)="exitRegistration()"></app-register>
+</div>

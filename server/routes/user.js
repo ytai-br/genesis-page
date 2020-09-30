@@ -41,7 +41,7 @@ app.get('/get/:id', async(req, res) => {
 app.post('/save-employe', async(req, res) => {
     var response = ResponseUtil.prepareResponse();
     try {
-        const userAux = await userModel.find({ email: res.body.email }).exec();
+        const userAux = await userModel.find({ email: req.body.email }).exec();
         if (userAux) {
             response.success = false;
             response.message = "Ya existe un usuario con ese email";
@@ -64,11 +64,10 @@ app.post('/save-employe', async(req, res) => {
 app.post('/sign-in', async(req, res) => {
     var response = ResponseUtil.prepareResponse();
     try {
-        const userAux = await userModel.find({ email: res.body.email }).exec();
-        if (userAux) {
+        const userAux = await userModel.find({ email: req.body.email }).exec();
+        if (userAux[0]) {
             response.success = false;
             response.message = "Ya existe un usuario con ese email";
-            res.json(response);
         }
         const user = new userModel(req.body);
         await user.save();
@@ -84,19 +83,18 @@ app.post('/sign-in', async(req, res) => {
 });
 
 app.post('/login', async(req, res) => {
-    var response = ResponseUtils.prepareResponse();
+    var response = ResponseUtil.prepareResponse();
     try {
-        var user = await userModel.find({ email: res.body.email }).exec();
-        if (userAux && user.password == req.body.password) {
-            user.status = true;
-            await userModel.findByIdAndUpdate(req.params.id, user);
+        var user = await userModel.find({ email: req.body.email }).exec();
+        if (!user[0]) {
+            response.success = false;
+            response.message = "La contrasenha o el usuario son incorrectas";
+        }
+        if (user[0].password == req.body.password) {
             response.success = true;
             response.message = "Ingreso correctamente";
-            response.data = user;
-            res.json(response);
+            response.data = user[0];
         }
-        response.success = false;
-        response.message = "La contrasenha o el usuario son incorrectas";
         res.json(response);
     } catch (err) {
         response.message = err;
@@ -106,9 +104,9 @@ app.post('/login', async(req, res) => {
 });
 
 app.post('/logout', async(req, res) => {
-    var response = ResponseUtils.prepareResponse();
+    var response = ResponseUtil.prepareResponse();
     try {
-        var user = await userModel.find({ email: res.body.email }).exec();
+        var user = await userModel.find({ email: req.body.email }).exec();
         if (userAux) {
             user.status = false;
             await userModel.findByIdAndUpdate(req.params.id, user);

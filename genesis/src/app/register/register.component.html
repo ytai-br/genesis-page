@@ -1,0 +1,49 @@
+<div class="register-page">
+    <div>
+        <h1 class="nice">Registrate</h1>
+    </div>
+    <form class="form-horizontal " method="post " action="# ">
+        <div class="form-group ">
+            <label class="col-md-4 control-label " for="firsName">Nombres</label>
+            <div class="col-md-4 ">
+                <input id="firsName " name="firsName " type="text" placeholder="Nombres " class="form-control input-md " required=" " [(ngModel)]="user.firstName">
+                <span class="help-block ">Por favor ingresa tus nombres</span>
+            </div>
+        </div>
+        <div class="form-group ">
+            <label class="col-md-4 control-label " for="lastName">Apellidos</label>
+            <div class="col-md-4 ">
+                <input id="lastName " name="lastName " type="text" placeholder="Apellidos " class="form-control input-md " required=" " [(ngModel)]="user.lastName">
+                <span class="help-block ">Por favor ingresa tus apellidos</span>
+            </div>
+        </div>
+        <div class="form-group ">
+            <label class="col-md-4 control-label " for="password ">Correo</label>
+            <div class="col-md-4 ">
+                <input id="email " name="email " type="email" placeholder="Correo " class="form-control input-md " required=" " [(ngModel)]="user.email">
+                <span class="help-block ">Por favor ingresa tu correo</span>
+            </div>
+        </div>
+        <div class="form-group ">
+            <label class="col-md-4 control-label " for="password ">Contraseña</label>
+            <div class="col-md-4 ">
+                <input id="password " name="password " type="password" placeholder="Contraseña " class="form-control input-md " required=" " [(ngModel)]="user.password">
+                <span class="help-block ">Por favor ingresa tu contraseña</span>
+            </div>
+        </div>
+        <div class="form-group ">
+            <label class="col-md-4 control-label " for="password ">Perfil</label>
+            <div class="col-md-4 ">
+                <input id="weight " name="weight " type="number " placeholder="Weight " class="form-control input-md " required=" ">
+                <span class="help-block ">In Kg</span>
+            </div>
+        </div>
+        <div class="form-group ">
+            <label class="col-md-4 control-label " for="button1id "></label>
+            <div class="col-md-8 ">
+                <button class="btn btn-outline-light" (click)="saveUser()">Save</button>
+                <button class="btn btn-outline-dark" (click)="cancel()">Cancel</button>
+            </div>
+        </div>
+    </form>
+</div>
