@@ -11,5 +11,16 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  productos(){
+    let interval =setInterval(function(){
+      let y=window.scrollY;
+      y++;
+    window.scrollTo (0,y);
+    },1);
+    setTimeout(function(){
+      clearInterval(interval);
+   }, 2000);
+  }
+  
 }
+
