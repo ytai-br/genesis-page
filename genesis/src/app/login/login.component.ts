@@ -22,6 +22,10 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    if (this.userService.isUserLoggedIn()) {
+      this.user.email = this.userService.getUser().email;
+      this.user.password = "password";
+    }
   }
 
   openRegister() {

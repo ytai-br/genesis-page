@@ -55,6 +55,25 @@ export class ProductsComponent implements OnInit {
     this.products[position].edited = true;
   }
 
+  handleInputChange(e, position) {
+    var file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
+    var pattern = /image-*/;
+    var reader = new FileReader();
+    if (!file.type.match(pattern)) {
+      alert('invalid format');
+      return;
+    }
+    let self = this;
+    reader.readAsDataURL(file);
+    reader.onload = function () {
+      console.log(reader.result);
+      self.products[position].image = reader.result;
+    };
+    reader.onerror = function (error) {
+      console.log('Error: ', error);
+    };
+  }
+
   updateProduct(id, position) {
     this.products[position].edited = false;
     const header = new HttpHeaders({'Content-Type':'application/json; charset=utf-8'});

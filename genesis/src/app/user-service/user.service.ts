@@ -28,6 +28,19 @@ export class UserService {
     }
   }
 
+  getUser() {
+    if (localStorage.getItem("user")) {
+      let userObj = JSON.parse(localStorage.getItem("user"));
+      this.user = {};
+      this.user.email = userObj.email;
+      this.user.firstName = userObj.firstName;
+      this.user.lastName = userObj.lastName;
+      this.user.role = userObj.role;
+      return this.user;
+    }
+    return {};
+  }
+
   logout() {
     if (localStorage.getItem("user")) {
       this.user = {};
